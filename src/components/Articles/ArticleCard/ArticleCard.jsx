@@ -56,14 +56,14 @@ export const ArticleCard = ({ article, categories }) => {
                     <p className='article-card-date'>{formattedDate}</p>
                 </div>
                 <div className='article-card-actions'>
-                    {isUserArticle && (
+                    {isUserArticle ? (
                         <>
-                            <Trash2 size={16} onClick={handleDeleteArticle} />
-                            <Pencil size={16} onClick={handleUpdateArticle} />
+                            <Trash2 color='#fa3c3c' size={16} onClick={handleDeleteArticle} />
+                            <Pencil color='orange' size={16} onClick={handleUpdateArticle} />
                         </>
-                    )
+                    ) : null
                     }
-                    <Share size={16} onClick={handleShareArticle} />
+                    <Share color="#486cfa" size={16} onClick={handleShareArticle} />
                 </div>
             </div>
         </div>
