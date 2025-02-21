@@ -1,0 +1,41 @@
+.single-article-page {
+    padding: 24px;
+}
+
+.back-button {
+    width: 32px;
+    height: 32px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #4f4f4f;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background-color: #3f3f3f;
+}
+
+.back-button:active {
+    transform: scale(0.95);
+}
+
+.article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.article-header {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.article-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
