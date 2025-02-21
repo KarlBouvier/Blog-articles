@@ -70,7 +70,7 @@ export const UpdateArticle = () => {
     return (
         <div className='update-article'>
             <div className='update-article-card'>
-                <h2>Create article</h2>
+                <h2>Update article</h2>
                 <div className='update-article-card-content'>
                     <label>Title</label>
                     <input className='article-input' ref={titleRef} type='text' placeholder='Title' />
