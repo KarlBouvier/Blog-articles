@@ -86,15 +86,25 @@ export const ArticlesPage = () => {
                     <div className='search'>
                         <Search />
                         <input ref={searchRef} className='search-bar' type='text' placeholder='Rechercher un article' onChange={handleSearch} />
-                        {searchRef.current.value && <X className='clear' size={16} onClick={handleClearSearch}/>}
+                        {searchRef.current.value && <X className='clear' size={16} onClick={handleClearSearch} />}
                     </div>
                     <button onClick={handleNavCreateArticle}>Créer un article</button>
                 </div>
             </div>
             <div className='articles-list'>
-                {articlesFiltered.map(article => (
-                    <ArticleCard key={article.id} article={article} categories={categories} />
-                ))}
+                {
+                    !articlesFiltered ? <p style={{ backgroundColor: "red"}}>Loading...</p> :
+                        articlesFiltered.length === 0 ? (
+                            <div>
+                                <p>Désolé ! Aucun article ne correspond à votre recherche ! Vous finirez bien par trouver votre bonheur ! 🎉</p>
+                            </div>
+                        ) :
+                            (
+                                articlesFiltered.map(article => (
+                                    <ArticleCard key={article.id} article={article} categories={categories} />
+                                ))
+                            )
+                }
             </div>
         </div>
     )
