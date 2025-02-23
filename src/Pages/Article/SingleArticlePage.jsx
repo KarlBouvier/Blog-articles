@@ -32,9 +32,9 @@ export const SingleArticlePage = () => {
     }, [user, article]);
 
     const handleDeleteArticle = useCallback((e) => {
-        // Delete article
         e.stopPropagation();
-    }, []);
+        navigate(`/article/delete/${id}`);
+    }, [ navigate, id]);
 
     const handleUpdateArticle = useCallback((e) => {
         e.stopPropagation();

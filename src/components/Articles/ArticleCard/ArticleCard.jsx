@@ -14,6 +14,7 @@ export const ArticleCard = ({ article, categories }) => {
         const category = categories.find(category => category.title === article.category_title);
         return category ? category.color : "#59b4b5";
     }, [categories, article.category_title]);
+
     const formattedDate = useMemo(() => new Date(article.created_at).toLocaleDateString(), [article.created_at]);
 
     const isUserArticle = useMemo(() => {
@@ -27,15 +28,14 @@ export const ArticleCard = ({ article, categories }) => {
     }, [navigate, article.id]);
 
     const handleDeleteArticle = useCallback((e) => {
-        // Delete article
         e.stopPropagation();
-        console.log('Delete article');
-    }, []);
+        navigate(`/article/delete/${article.id}`);
+    }, [navigate, article.id]);
 
     const handleUpdateArticle = useCallback((e) => {
         e.stopPropagation();
         navigate(`/article/update/${article.id}`);
-    }, [ navigate, article.id]);
+    }, [navigate, article.id]);
 
     const handleShareArticle = useCallback((e) => {
         e.stopPropagation();

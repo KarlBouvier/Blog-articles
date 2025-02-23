@@ -7,6 +7,7 @@ import { useCategories } from "../../hooks/categories/getCategories";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { getUrl } from "../../../getUrl";
+import { Pencil } from "lucide-react";
 
 export const UpdateArticle = () => {
     const navigate = useNavigate();
@@ -17,6 +18,7 @@ export const UpdateArticle = () => {
     const titleRef = useRef();
     const contentRef = useRef();
     const [categoryId, setCategoryId] = useState();
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         if (!article) return;
@@ -32,10 +34,12 @@ export const UpdateArticle = () => {
             toast.error('Veuillez remplir tous les champs ❌');
             return;
         }
+        if (isLoading) return;
         const title = titleRef.current.value;
         const content = contentRef.current.value;
         const category_id = categoryId;
         try {
+            setIsLoading(true);
             await axios.put(getUrl() + '/articles/' + id, {
                 title,
                 content,
@@ -51,8 +55,10 @@ export const UpdateArticle = () => {
         } catch (error) {
             console.error(error);
             toast.error('Impossible de modifier l\'article');
+        } finally {
+            setIsLoading(false);
         }
-    }, [titleRef, contentRef, categoryId, navigate, id, userToken]);
+    }, [titleRef, contentRef, categoryId, navigate, id, userToken, isLoading]);
 
     if(!user && !isUserLoading) {
         navigate('/login');
@@ -87,7 +93,7 @@ export const UpdateArticle = () => {
                         ))}
                     </select>
                 </div>
-                <button onClick={handleUpdateArticle}>Modifier l'article</button>
+                <button onClick={handleUpdateArticle}>Modifier l'article {<Pencil size={14} />}</button>
             </div>
         </div>
     )

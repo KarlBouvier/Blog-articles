@@ -12,15 +12,14 @@ export const AuthProvider = ({ children }) => {
     const userToken = localStorage.getItem('authToken');
 
     const getProfile = async () => {
-        const token = localStorage.getItem('authToken');
-        if (!token) {
+        if (!userToken) {
             setIsLoading(false);
             return;
         }
         try {
             const response = await axios.get(getUrl() + '/profile', {
                 headers: {
-                    Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${userToken}`
                 }
             });
             setUser(response.data);

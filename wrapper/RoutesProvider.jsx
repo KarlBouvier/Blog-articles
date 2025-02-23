@@ -6,6 +6,7 @@ import { ArticlesPage } from "../src/Pages/Articles/ArticlesPage"
 import { SingleArticlePage } from "../src/Pages/Article/SingleArticlePage"
 import { CreateArticlePage } from "../src/Pages/CreateArticle/CreateArticlePage"
 import { UpdateArticle } from "../src/Pages/UpdateArticle/UpdateArticle"
+import { DeleteArticle } from "../src/Pages/DeleteArticle/DeleteArticle"
 
 export const RoutesProvider = () => {
     return (
@@ -17,6 +18,7 @@ export const RoutesProvider = () => {
             <Route path="/articles/create" element={<CreateArticlePage />} />
             <Route path="/article/:id" element={<SingleArticlePage />} />
             <Route path="/article/update/:id" element={<UpdateArticle />} />
+            <Route path="/article/delete/:id" element={<DeleteArticle />} />
             <Route path="*" element={<h1>Not Found</h1>} />
         </Routes>
     )
